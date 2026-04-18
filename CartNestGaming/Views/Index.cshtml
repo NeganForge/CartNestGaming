@@ -1,0 +1,12 @@
+﻿@model List<Category>
+
+<h2>Select Game Category</h2>
+
+<div class="category-container">
+    @foreach (var cat in Model)
+    {
+        <a href="/Product/ByCategory/@cat.Id" class="category-card">
+            @cat.Name
+        </a>
+    }
+</div>

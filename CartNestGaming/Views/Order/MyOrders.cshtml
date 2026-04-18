@@ -1,0 +1,148 @@
+﻿@model IEnumerable<CartNestGaming.Models.Order>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Orders";
+}
+
+<style>
+    body {
+        background: #020617;
+        color: white;
+        font-family: 'Segoe UI';
+        margin: 0;
+    }
+
+    .container {
+        width: 85%;
+        margin: auto;
+        text-align: center;
+        padding-bottom: 100px;
+    }
+
+    h2 {
+        margin-top: 30px;
+        color: #a855f7;
+        text-shadow: 0 0 10px #a855f7;
+    }
+
+    .order-card {
+        background: #0f172a;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #9333ea;
+        width: 60%;
+        text-align: left;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+
+    /* 🔥 Back Button */
+    .back-btn {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 25px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #06b6d4, #9333ea);
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 0 15px #9333ea;
+        transition: 0.3s;
+    }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #9333ea;
+        }
+
+    /* 🛒 CART ICON */
+    .cart-icon {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        font-size: 24px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background: red;
+        color: white;
+        border-radius: 50%;
+        padding: 3px 7px;
+        font-size: 12px;
+    }
+    /* 🔥 Back Button Design */
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 30px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #06b6d4, #9333ea);
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 15px #9333ea;
+        transition: 0.3s;
+    }
+
+        .back-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px #9333ea;
+        }
+</style>
+
+<!-- 🛒 CART ICON -->
+<a href="/Cart/Index" class="cart-icon">
+    🛒
+    <span class="cart-count">
+        @(ViewBag.CartCount ?? 0)
+    </span>
+</a>
+
+<div class="container">
+    <h2>📦 My Orders</h2>
+
+    @if (!Model.Any())
+    {
+        <p>No orders yet 😢</p>
+    }
+    else
+    {
+        @foreach (var order in Model)
+        {
+            <div class="order-card">
+                <h3>Order Code: @order.OrderCode</h3>
+                <p>Date: @order.OrderDate</p>
+                <p>Total: ₹@order.TotalAmount</p>
+
+                <ul>
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <li>
+                            🎮 @item.Product.Name - Qty: @item.Quantity - ₹@item.Price
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+
+    <!-- 🔥 BACK BUTTON (NOW PROPERLY ADDED) -->
+    <div style="margin-top:20px;">
+        <a href="/User/Index" class="back-btn">
+            ⬅ Back to Store
+        </a>
+    </div>
+</div>

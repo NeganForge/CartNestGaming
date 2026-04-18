@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CartNestGaming.Models.Payment>
+
+@{
+    ViewData["Title"] = "Payment Test";
+}
+
+<h2 style="text-align:center;">💰 Payment Records</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p style="text-align:center;">No payments found 😢</p>
+}
+else
+{
+    <table border="1" cellpadding="10" style="margin:auto; text-align:center;">
+        <tr>
+            <th>Id</th>
+            <th>UserId</th>
+            <th>ProductId</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserId</td>
+                <td>@item.ProductId</td>
+                <td>₹ @item.Amount</td>
+                <td>@item.PaymentDate</td>
+                <td>@item.Status</td>
+            </tr>
+        }
+    </table>
+}

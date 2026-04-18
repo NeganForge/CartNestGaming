@@ -1,0 +1,111 @@
+﻿@model CartNestGaming.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<style>
+    body {
+        background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+        color: white;
+        font-family: 'Segoe UI';
+    }
+
+    /* CONTAINER */
+    .details-container {
+        max-width: 600px;
+        margin: 60px auto;
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    /* TITLE */
+    h2 {
+        text-align: center;
+        color: #38bdf8;
+        text-shadow: 0 0 10px #38bdf8;
+    }
+
+    /* DETAILS */
+    .details dt {
+        font-weight: bold;
+        color: #94a3b8;
+    }
+
+    .details dd {
+        margin-bottom: 10px;
+    }
+
+    /* BUTTONS */
+    .btn {
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .btn-warning {
+        background: #facc15;
+        color: black;
+    }
+
+        .btn-warning:hover {
+            box-shadow: 0 0 10px #facc15;
+        }
+
+    .btn-secondary {
+        background: #64748b;
+        color: white;
+        margin-left: 10px;
+    }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 10px #64748b;
+        }
+
+    /* BUTTON AREA */
+    .btn-area {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="details-container">
+
+    <h2>🔍 Product Details</h2>
+
+    <hr />
+
+    <dl class="details">
+
+        <dt>Name</dt>
+        <dd>@Model.Name</dd>
+
+        <dt>Description</dt>
+        <dd>@Model.Description</dd>
+
+        <dt>Price</dt>
+        <dd>₹ @Model.Price</dd>
+
+        <dt>Stock</dt>
+        <dd>@Model.Stock</dd>
+
+        <dt>Category</dt>
+        <dd>@Model.Category?.Name</dd>
+
+    </dl>
+
+    <div class="btn-area">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+            ✏ Edit
+        </a>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            ⬅ Back
+        </a>
+    </div>
+
+</div>

@@ -1,0 +1,131 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI';
+            background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+            color: white;
+        }
+
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #38bdf8;
+            text-shadow: 0 0 15px #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #38bdf8;
+        }
+
+        .card h2 {
+            margin: 10px 0;
+        }
+
+        .icon {
+            font-size: 40px;
+        }
+
+        .products { border-left: 5px solid #22c55e; }
+        .categories { border-left: 5px solid #facc15; }
+        .orders { border-left: 5px solid #f97316; }
+        .users { border-left: 5px solid #a855f7; }
+
+        .logout {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: #ef4444;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .logout:hover {
+            box-shadow: 0 0 10px #ef4444;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎮 Admin Control Panel</h1>
+    <p class="subtitle">Manage your gaming store like a pro 🚀</p>
+
+    <div class="cards">
+
+        <!-- PRODUCTS -->
+        <a asp-controller="Product" asp-action="Index" class="card products">
+            <div class="icon">📦</div>
+            <h2>Products</h2>
+            <p>Manage game products</p>
+        </a>
+
+        <!-- CATEGORIES (FIXED 🔥) -->
+        <a asp-controller="Category" asp-action="Index" class="card categories">
+            <div class="icon">📂</div>
+            <h2>Categories</h2>
+            <p>Organize game categories</p>
+        </a>
+
+        <!-- ORDERS -->
+        <a href="#" class="card orders">
+            <div class="icon">🧾</div>
+            <h2>Orders</h2>
+            <p>Track purchases</p>
+        </a>
+
+        <!-- USERS -->
+        <a href="#" class="card users">
+            <div class="icon">👤</div>
+            <h2>Users</h2>
+            <p>Manage customers</p>
+        </a>
+
+    </div>
+
+    <!-- LOGOUT -->
+    <a asp-controller="Home" asp-action="LoginChoice" class="logout">
+        Logout
+    </a>
+
+</div>
+
+</body>
+</html>

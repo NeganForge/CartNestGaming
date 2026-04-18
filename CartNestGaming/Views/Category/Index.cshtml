@@ -1,0 +1,50 @@
+﻿@model List<Category>
+
+<style>
+    body {
+        background: #020617;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* CATEGORY UI */
+    .category-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .category-card {
+        padding: 20px 30px;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: white;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(0,255,255,0.2);
+    }
+
+        .category-card:hover {
+            background: #22c55e;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #22c55e;
+        }
+</style>
+
+<h2>🎮 Select Game Category</h2>
+
+<div class="category-container">
+    @foreach (var cat in Model)
+    {
+        <a href="/Product/ByCategory/@cat.Id" class="category-card">
+            @cat.Name
+        </a>
+    }
+</div>

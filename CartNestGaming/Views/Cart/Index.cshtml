@@ -1,0 +1,120 @@
+﻿@model IEnumerable<CartNestGaming.Models.Cart>
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Your Cart";
+}
+
+<style>
+    body {
+        background: #020617;
+        color: white;
+        font-family: 'Segoe UI';
+    }
+
+    .container {
+        width: 85%;
+        margin: auto;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: 30px;
+        color: #38bdf8;
+        text-shadow: 0 0 10px #38bdf8;
+    }
+
+    .card {
+        background: #0f172a;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #38bdf8;
+        width: 60%;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .plus { background: #22c55e; }
+    .minus { background: #f59e0b; }
+    .remove { background: #ef4444; }
+
+    .checkout {
+        background: linear-gradient(45deg, #06b6d4, #9333ea);
+        padding: 12px 30px;
+        border-radius: 12px;
+        font-size: 18px;
+        margin-top: 20px;
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        box-shadow: 0 0 15px #9333ea;
+    }
+    /* 🔥 Back Button Design */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #06b6d4, #9333ea);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 0 15px #9333ea;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px #9333ea;
+}
+</style>
+
+<div class="container">
+    <h2>🛒 Your Cart</h2>
+
+    @if (!Model.Any())
+    {
+        <p>Cart is empty 😢</p>
+    }
+    else
+    {
+        decimal total = 0;
+
+        @foreach (var item in Model)
+        {
+            var itemTotal = item.Product.Price * item.Quantity;
+            total += itemTotal;
+
+            <div class="card">
+                <h3>@item.Product.Name</h3>
+                <p>Price: ₹@item.Product.Price</p>
+                <p>Quantity: @item.Quantity</p>
+                <p>Total: ₹@itemTotal</p>
+
+                <a class="btn plus" href="/Cart/Increase/@item.Id">+</a>
+                <a class="btn minus" href="/Cart/Decrease/@item.Id">-</a>
+                <a class="btn remove" href="/Cart/Remove/@item.Id">Remove</a>
+            </div>
+        }
+
+        <h3>Total Amount: ₹@total</h3>
+
+        <a class="checkout" href="/Order/Checkout">🔥 Checkout</a>
+    <a asp-controller="Payment" asp-action="Index" class="payment-btn">
+    💰 View Payments
+</a>
+        <div style="margin-top:20px;">
+    <a href="/User/Index" class="back-btn">
+        ⬅ Back to Store
+    </a>
+</div>
+    }
+</div>

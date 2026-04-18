@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Order Success";
+}
+
+<style>
+    body {
+        background: #020617;
+        color: white;
+        text-align: center;
+        font-family: 'Segoe UI';
+    }
+
+    .box {
+        margin-top: 150px;
+    }
+
+    h1 {
+        color: #22c55e;
+        text-shadow: 0 0 20px #22c55e;
+    }
+
+    .btn {
+        margin-top: 30px;
+        padding: 12px 25px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #06b6d4, #9333ea);
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 0 15px #9333ea;
+    }
+    /* 🔥 Back Button Design */
+    .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 30px;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #06b6d4, #9333ea);
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 0 15px #9333ea;
+        transition: 0.3s;
+    }
+
+        .back-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px #9333ea;
+        }
+</style>
+
+<div class="box">
+    <h1>✅ Order Placed Successfully!</h1>
+    <p>Your games are on the way 🎮🔥</p>
+
+    <a class="btn" href="/Order/MyOrders">View My Orders</a>
+    <a asp-controller="User" asp-action="Index" class="back-btn">
+        ⬅ Back to Store
+    </a>
+</div>

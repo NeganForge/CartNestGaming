@@ -1,0 +1,154 @@
+﻿@model CartNestGaming.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<style>
+    body {
+        background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+        color: white;
+        font-family: 'Segoe UI';
+    }
+
+    /* CONTAINER */
+    .form-container {
+        max-width: 500px;
+        margin: 50px auto;
+        background: #1e293b;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    /* TITLE */
+    h2 {
+        text-align: center;
+        color: #38bdf8;
+        text-shadow: 0 0 10px #38bdf8;
+    }
+
+    /* INPUTS */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        margin-top: 5px;
+        background: #020617;
+        color: white;
+        outline: none;
+    }
+
+        input:focus, select:focus {
+            box-shadow: 0 0 10px #38bdf8;
+        }
+
+    /* BUTTONS */
+    .btn {
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .btn-success {
+        background: #22c55e;
+        color: white;
+    }
+
+        .btn-success:hover {
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+    .btn-secondary {
+        background: #64748b;
+        color: white;
+        margin-left: 10px;
+    }
+
+        .btn-secondary:hover {
+            box-shadow: 0 0 10px #64748b;
+        }
+
+    /* ERROR */
+    .text-danger {
+        color: #f87171;
+    }
+</style>
+
+<div class="form-container">
+
+    <h2>➕ Add Product</h2>
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <!-- Name -->
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input asp-for="Description" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+            <label asp-for="CategoryId">Category</label>
+            <select asp-for="CategoryId">
+                <option value="">-- Select Category --</option>
+
+                @foreach (var cat in ViewBag.Categories)
+                {
+                    <option value="@cat.Id">@cat.Name</option>
+                }
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" type="number" step="0.01" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <!-- Stock -->
+        <div class="form-group">
+            <label asp-for="Stock"></label>
+            <input asp-for="Stock" type="number" />
+            <span asp-validation-for="Stock" class="text-danger"></span>
+        </div>
+
+        <!-- Buttons -->
+        <div style="text-align:center;">
+            <button type="submit" class="btn btn-success">💾 Save Product</button>
+            <a asp-action="Index" class="btn btn-secondary">⬅ Back</a>
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

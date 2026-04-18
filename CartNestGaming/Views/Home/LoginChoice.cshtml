@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CartNest Gaming</title>
+
+    <style>
+            body {
+                margin: 0;
+                font-family: 'Segoe UI';
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+                color: white;
+            }
+
+            .container {
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 40px;
+                color: #38bdf8;
+                text-shadow: 0 0 15px #38bdf8, 0 0 30px #0ea5e9;
+                margin-bottom: 30px;
+            }
+
+            .btn {
+                display: block;
+                width: 250px;
+                margin: 20px auto;
+                padding: 14px;
+                border-radius: 12px;
+                font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+            .admin {
+                background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+                color: black;
+            }
+
+                .admin:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 20px #38bdf8;
+                }
+
+            .user {
+                background: linear-gradient(45deg, #a855f7, #7e22ce);
+                color: white;
+            }
+
+                .user:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 20px #a855f7;
+                }
+
+            .subtitle {
+                color: #94a3b8;
+                margin-bottom: 20px;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎮 CartNest Gaming</h1>
+        <p class="subtitle">Choose your portal</p>
+
+        <a asp-controller="Auth" asp-action="AdminLogin" class="btn admin">
+            🔐 Admin Login
+        </a>
+
+        <a asp-controller="Auth" asp-action="UserLogin" class="btn user">
+            👤 User Access
+        </a>
+
+    </div>
+
+</body>
+</html>
