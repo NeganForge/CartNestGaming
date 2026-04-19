@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CartNestGaming.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CartNestGaming.Models
 {

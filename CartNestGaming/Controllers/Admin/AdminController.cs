@@ -6,7 +6,7 @@ namespace CartNestGaming.Controllers
     {
         public IActionResult Dashboard()
         {
-            return View();
+            return View("~/Views/AdminV/Admin/Dashboard.cshtml");
         }
     }
 }

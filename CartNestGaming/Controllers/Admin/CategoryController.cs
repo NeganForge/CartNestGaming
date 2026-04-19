@@ -2,7 +2,7 @@
 using CartNestGaming.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CartNestGaming.Controllers
+namespace CartNestGaming.Controllers.Admin
 {
    public class CategoryController : Controller
     {

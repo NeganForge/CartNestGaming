@@ -4,8 +4,9 @@ using CartNestGaming.Data;
 using CartNestGaming.Models;
 using System;
 using System.Linq;
+using CartNestGaming.Models;
 
-namespace CartNestGaming.Controllers
+namespace CartNestGaming.Controllers.User
 {
     public class OrderController : Controller
     {

@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CartNestGaming.Models;
+﻿using CartNestGaming.Models;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace CartNestGaming.Data
 {
@@ -10,25 +11,12 @@ namespace CartNestGaming.Data
         {
         }
 
-        // 🔐 Users
-        public DbSet<User> Users { get; set; }
-
-        // 🎮 Products
-        public DbSet<Product> Products { get; set; }
-
-        // 📂 Categories
-        public DbSet<Category> Categories { get; set; }
-
-        // 🛒 Cart
-        public DbSet<Cart> Carts { get; set; }
-
-        // 📦 Orders
-        public DbSet<Order> Orders { get; set; }
-
-        // 📄 Order Items
-        public DbSet<OrderItem> OrderItems { get; set; }
-
         public DbSet<AppUser> AppUsers { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }

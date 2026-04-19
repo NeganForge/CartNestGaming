@@ -16,23 +16,23 @@
                 color: white;
             }
 
-            /* 🎮 FULL CLEAR BACKGROUND */
+            /* 🎮 BACKGROUND */
             .bg {
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background: url('/images/bg.jpg') no-repeat center center/cover;
+                background: url('/images/bg.jpg?v=4') no-repeat center center/cover;
             }
 
-            /* 🔥 LIGHT DARK SHADE (NOT HEAVY) */
+            /* 🌑 LIGHT OVERLAY */
             .overlay {
                 position: absolute;
                 width: 100%;
                 height: 100%;
-                background: rgba(0, 0, 0, 0.45); /* 👈 balanced */
+                background: rgba(0, 0, 0, 0.45);
             }
 
-            /* 🎯 MAIN CENTER */
+            /* 🎯 CENTER CONTENT */
             .container {
                 position: relative;
                 z-index: 2;
@@ -43,12 +43,12 @@
                 align-items: center;
             }
 
-            /* 🎮 LOGO (KEEP YOUR STYLE) */
+            /* 🔥 NEON CYAN LOGO (STEAM STYLE) */
             h1 {
                 font-size: 52px;
-                color: #38bdf8;
-                text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff, 0 0 50px #0ea5e9;
+                color: #67e8f9;
                 margin-bottom: 10px;
+                text-shadow: 0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 20px #06b6d4, 0 0 40px #0891b2, 0 0 80px #0e7490;
             }
 
             .subtitle {
@@ -71,7 +71,7 @@
                 font-weight: bold;
                 text-align: center;
                 text-decoration: none;
-                transition: 0.3s;
+                transition: all 0.3s ease;
             }
 
             /* 🔐 ADMIN */
@@ -81,8 +81,8 @@
             }
 
                 .admin:hover {
-                    transform: scale(1.08);
-                    box-shadow: 0 0 30px #38bdf8;
+                    transform: translateY(-3px) scale(1.05);
+                    box-shadow: 0 0 25px #22d3ee;
                 }
 
             /* 👤 USER */
@@ -92,11 +92,11 @@
             }
 
                 .user:hover {
-                    transform: scale(1.08);
-                    box-shadow: 0 0 30px #a855f7;
+                    transform: translateY(-3px) scale(1.05);
+                    box-shadow: 0 0 25px #a855f7;
                 }
 
-            /* 🔥 OPTIONAL TOP TAGLINE */
+            /* 🟡 TAGLINE */
             .tagline {
                 position: absolute;
                 top: 30px;
@@ -117,10 +117,7 @@
     <!-- 🌑 Overlay -->
     <div class="overlay"></div>
 
-    <!-- 💡 Tagline -->
-    <div class="tagline">
-        🎯 Buy Games at CNG — Cheap • Safe • Secure
-    </div>
+   
 
     <!-- 🎯 Main Content -->
     <div class="container">

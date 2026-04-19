@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CartNestGaming.Data;
-using CartNestGaming.Models;
 using System.Linq;
+using CartNestGaming.Models;
 
-namespace CartNestGaming.Controllers
+namespace CartNestGaming.Controllers.User
 {
     public class CartController : Controller
     {

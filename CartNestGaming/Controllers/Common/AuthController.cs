@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace CartNestGaming.Controllers
+namespace CartNestGaming.Controllers.Common
 {
     public class AuthController : Controller
     {
@@ -8,7 +8,7 @@ namespace CartNestGaming.Controllers
         [HttpGet]
         public IActionResult AdminLogin()
         {
-            return View();
+            return View("~/Views/CommonV/Auth/AdminLogin.cshtml");
         }
 
         // HANDLE LOGIN
