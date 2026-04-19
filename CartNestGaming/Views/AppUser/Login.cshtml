@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    body {
+        background: radial-gradient(circle at center, #020617, #000814);
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .login-container {
+        width: 350px;
+        margin: 120px auto;
+        padding: 25px;
+        background: #0f172a;
+        border-radius: 15px;
+        box-shadow: 0 0 20px #00f7ff;
+        text-align: center;
+    }
+
+    .login-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #38bdf8;
+        text-shadow: 0 0 10px #00f7ff;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+        background: #1e293b;
+        color: white;
+    }
+
+        input:focus {
+            box-shadow: 0 0 8px #00f7ff;
+        }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background: linear-gradient(45deg, #06b6d4, #3b82f6);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00f7ff;
+        }
+
+    .error {
+        color: #ef4444;
+        margin-top: 10px;
+    }
+
+    .register-link {
+        display: block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #a78bfa;
+        font-size: 14px;
+    }
+
+        .register-link:hover {
+            text-decoration: underline;
+            color: #c084fc;
+        }
+</style>
+
+<div class="login-container">
+
+    <div class="login-title">🎮 Login</div>
+
+    <form method="post" asp-controller="AppUser" asp-action="Login">
+
+        <input name="Email" placeholder="Enter Email" />
+
+        <input name="Password" type="password" placeholder="Enter Password" />
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p class="error">@ViewBag.Error</p>
+
+    <a asp-controller="AppUser" asp-action="Register" class="register-link">
+        New user? Create Account
+    </a>
+
+</div>

@@ -10,79 +10,133 @@
     <style>
             body {
                 margin: 0;
-                font-family: 'Segoe UI';
+                font-family: 'Segoe UI', sans-serif;
                 height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: radial-gradient(circle at top, #020617, #020617 40%, #0f172a);
+                overflow: hidden;
                 color: white;
             }
 
-            .container {
-                text-align: center;
+            /* 🎮 FULL CLEAR BACKGROUND */
+            .bg {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: url('/images/bg.jpg') no-repeat center center/cover;
             }
 
+            /* 🔥 LIGHT DARK SHADE (NOT HEAVY) */
+            .overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.45); /* 👈 balanced */
+            }
+
+            /* 🎯 MAIN CENTER */
+            .container {
+                position: relative;
+                z-index: 2;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* 🎮 LOGO (KEEP YOUR STYLE) */
             h1 {
-                font-size: 40px;
+                font-size: 52px;
                 color: #38bdf8;
-                text-shadow: 0 0 15px #38bdf8, 0 0 30px #0ea5e9;
-                margin-bottom: 30px;
+                text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff, 0 0 50px #0ea5e9;
+                margin-bottom: 10px;
+            }
+
+            .subtitle {
+                color: #e2e8f0;
+                margin-bottom: 40px;
+                font-size: 16px;
+            }
+
+            /* 🔥 BUTTON GROUP */
+            .buttons {
+                display: flex;
+                gap: 20px;
             }
 
             .btn {
-                display: block;
-                width: 250px;
-                margin: 20px auto;
-                padding: 14px;
+                width: 240px;
+                padding: 16px;
                 border-radius: 12px;
                 font-size: 18px;
                 font-weight: bold;
+                text-align: center;
                 text-decoration: none;
                 transition: 0.3s;
             }
 
+            /* 🔐 ADMIN */
             .admin {
                 background: linear-gradient(45deg, #38bdf8, #0ea5e9);
                 color: black;
             }
 
                 .admin:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 0 20px #38bdf8;
+                    transform: scale(1.08);
+                    box-shadow: 0 0 30px #38bdf8;
                 }
 
+            /* 👤 USER */
             .user {
                 background: linear-gradient(45deg, #a855f7, #7e22ce);
                 color: white;
             }
 
                 .user:hover {
-                    transform: scale(1.05);
-                    box-shadow: 0 0 20px #a855f7;
+                    transform: scale(1.08);
+                    box-shadow: 0 0 30px #a855f7;
                 }
 
-            .subtitle {
-                color: #94a3b8;
-                margin-bottom: 20px;
+            /* 🔥 OPTIONAL TOP TAGLINE */
+            .tagline {
+                position: absolute;
+                top: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 18px;
+                color: #facc15;
+                text-shadow: 0 0 10px #facc15;
             }
     </style>
 </head>
 
 <body>
 
+    <!-- 🎮 Background -->
+    <div class="bg"></div>
+
+    <!-- 🌑 Overlay -->
+    <div class="overlay"></div>
+
+    <!-- 💡 Tagline -->
+    <div class="tagline">
+        🎯 Buy Games at CNG — Cheap • Safe • Secure
+    </div>
+
+    <!-- 🎯 Main Content -->
     <div class="container">
 
         <h1>🎮 CartNest Gaming</h1>
         <p class="subtitle">Choose your portal</p>
 
-        <a asp-controller="Auth" asp-action="AdminLogin" class="btn admin">
-            🔐 Admin Login
-        </a>
+        <div class="buttons">
+            <a asp-controller="Auth" asp-action="AdminLogin" class="btn admin">
+                🔐 Admin Login
+            </a>
 
-        <a asp-controller="Auth" asp-action="UserLogin" class="btn user">
-            👤 User Access
-        </a>
+            <a asp-controller="AppUser" asp-action="Register" class="btn user">
+                👤 User Access
+            </a>
+        </div>
 
     </div>
 

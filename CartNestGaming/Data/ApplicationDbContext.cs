@@ -28,7 +28,7 @@ namespace CartNestGaming.Data
         // 📄 Order Items
         public DbSet<OrderItem> OrderItems { get; set; }
 
-        public DbSet<Payment> Payments { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
 
     }
 }

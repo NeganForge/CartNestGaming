@@ -1,0 +1,101 @@
+﻿@model CartNestGaming.Models.AppUser
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        background: #0f172a;
+        color: white;
+        font-family: Arial;
+    }
+
+    .form-container {
+        width: 350px;
+        margin: 80px auto;
+        padding: 20px;
+        background: #1e293b;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #00f7ff;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #00f7ff;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background: #00c3cc;
+        }
+
+    .btn {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        padding: 10px;
+        background: #22c55e;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .btn.secondary {
+            background: #64748b;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+    .text-center {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+</style>
+
+<div class="form-container">
+    <h2>Create Account</h2>
+
+    <form method="post">
+
+        <label>Name</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+
+        <label>Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+
+        <label>Password</label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <!-- 👇 Login redirect section -->
+
+    <p class="text-center">Already have an account?</p>
+
+    <a asp-controller="AppUser" asp-action="Login" class="btn secondary">
+        Go to Login (ID / Password)
+    </a>
+
+</div>
