@@ -15,7 +15,7 @@ namespace CartNestGaming.Controllers.Admin
         public IActionResult Index()
         {
             var categories = _context.Categories.ToList();
-            return View(categories);
+            return View("~/Views/AdminV/Category/Index.cshtml" ,categories);
         }
     }
 }

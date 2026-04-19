@@ -115,29 +115,14 @@
             box-shadow: 0 0 20px #9333ea;
             transform: scale(1.05);
         }
-
-    /* 💳 BUY BUTTON */
-    .buy-btn {
-        background: linear-gradient(45deg, #22c55e, #16a34a);
-        border: none;
-        padding: 10px 20px;
-        border-radius: 10px;
-        color: white;
-        margin-top: 10px;
-        cursor: pointer;
-        box-shadow: 0 0 10px #22c55e;
-        transition: 0.3s;
-    }
-
-        .buy-btn:hover {
-            box-shadow: 0 0 20px #22c55e;
-            transform: scale(1.05);
-        }
 </style>
 
 <div class="container">
 
-    <a href="/Home/LoginChoice" class="logout-btn">🚪 Logout</a>
+    <!-- ✅ FIXED LOGOUT -->
+    <a asp-controller="AppUser" asp-action="Logout" class="logout-btn">
+        🚪 Logout
+    </a>
 
     <h2>🎮 Game Store</h2>
 
@@ -179,12 +164,12 @@
                     <p>@item.Category?.Name</p>
                     <p class="price">₹ @item.Price</p>
 
-                    <a class="add-btn" href="/Cart/AddToCart?productId=@item.Id">
+                    <a class="add-btn"
+                           asp-controller="Cart"
+                           asp-action="AddToCart"
+                           asp-route-productId="@item.Id">
                         🛒 Add to Cart
                     </a>
-
-                    
-
                 </div>
             }
         }

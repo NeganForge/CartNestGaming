@@ -2,27 +2,49 @@
 using CartNestGaming.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-public class UserController : Controller
+
+namespace CartNestGaming.Controllers.User
 {
-    private readonly ApplicationDbContext _context;
-    public UserController (ApplicationDbContext context)
+    public class UserController : Controller
     {
-        _context = context;
-    }
-    public IActionResult Index(string SearchString,String Category)
-    {
-        var Products = _context.Products
-        .Include(p => p.Category)
+        private readonly ApplicationDbContext _context;
+
+        public UserController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index(string searchString, string category)
+        {
+            // 🔐 SESSION CHECK (VERY IMPORTANT)
+            if (HttpContext.Session.GetString("UserId") == null)
+            {
+                return RedirectToAction("Login", "AppUser");
+            }
+
+            var products = _context.Products
+                .Include(p => p.Category)
                 .AsQueryable();
-        if (!String.IsNullOrEmpty(SearchString) )
-        {
-            Products = Products.Where(p => p.Name.ToLower().Contains(SearchString.ToLower()));
+
+            // 🔍 SEARCH
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p =>
+                    p.Name.ToLower().Contains(searchString.ToLower()));
+            }
+
+            // 📂 CATEGORY FILTER
+            if (!string.IsNullOrEmpty(category))
+            {
+                products = products.Where(p => p.Category.Name == category);
+            }
+
+            // 📦 SEND DATA TO VIEW
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+
+            // ✅ IMPORTANT PATH
+            return View("~/Views/UserV/User/Index.cshtml", products.ToList());
         }
-        if (!String.IsNullOrEmpty(Category))
-        {
-            Products = Products.Where(P => P.Category.Name == Category);
-        }
-        ViewBag.Categories = _context.Categories.ToList();
-        return View(Products.ToList());
     }
 }

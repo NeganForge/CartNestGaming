@@ -13,52 +13,14 @@ namespace CartNestGaming.Controllers.User
             _context = context;
         }
 
-        // GET Register
+        // ================= REGISTER =================
+
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            return View("~/Views/UserV/AppUser/Register.cshtml");
         }
 
-        // POST Register
-
-
-        // GET Login
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        // POST Login
-        [HttpPost]
-        public IActionResult Login(string Email, string Password)
-        {
-            var user = _context.AppUsers
-                .FirstOrDefault(u => u.Email == Email && u.Password == Password);
-
-            // ✅ FIXED CONDITION
-            if (user != null)
-            {
-                HttpContext.Session.SetString("UserId", user.Id.ToString());
-
-                return RedirectToAction("Index", "User"); // Store page
-            }
-
-            ViewBag.Error = "Invalid Login";
-            return View();
-        }
-
-        // Protected page (optional here, better in UserController)
-        public IActionResult Index()
-        {
-            if (HttpContext.Session.GetString("UserId") == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            return View();
-        }
         [HttpPost]
         public IActionResult Register(AppUser user)
         {
@@ -67,18 +29,55 @@ namespace CartNestGaming.Controllers.User
 
             if (existingUser != null)
             {
-                ViewBag.Error = "Email Already Exists";
-                return View(user); // ✅ FIXED (not "user")
+                ViewBag.Error = "Email already exists";
+                return View("~/Views/UserV/AppUser/Register.cshtml", user);
             }
 
             if (ModelState.IsValid)
             {
                 _context.AppUsers.Add(user);
                 _context.SaveChanges();
+
                 return RedirectToAction("Login");
             }
 
-            return View(user);
+            return View("~/Views/UserV/AppUser/Register.cshtml", user);
+        }
+
+        // ================= LOGIN =================
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View("~/Views/UserV/AppUser/Login.cshtml");
+        }
+
+        [HttpPost]
+        public IActionResult Login(string Email, string Password)
+        {
+            var user = _context.AppUsers
+                .FirstOrDefault(u => u.Email == Email && u.Password == Password);
+
+            if (user != null)
+            {
+                // ✅ Save session
+                HttpContext.Session.SetString("UserId", user.Id.ToString());
+                HttpContext.Session.SetString("UserName", user.Name);
+
+                // ✅ Go to store
+                return RedirectToAction("Index", "User");
+            }
+
+            ViewBag.Error = "Invalid Email or Password";
+            return View("~/Views/UserV/AppUser/Login.cshtml");
+        }
+
+        // ================= LOGOUT =================
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
     }
 }

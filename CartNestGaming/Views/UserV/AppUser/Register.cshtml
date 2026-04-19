@@ -58,13 +58,14 @@
             background: #64748b;
         }
 
-        .btn:hover {
-            opacity: 0.9;
-        }
-
     .text-center {
         text-align: center;
         margin-top: 10px;
+        font-size: 14px;
+    }
+
+    .error {
+        color: red;
         font-size: 14px;
     }
 </style>
@@ -72,30 +73,42 @@
 <div class="form-container">
     <h2>Create Account</h2>
 
-    <form method="post">
+    <!-- 🔴 Validation Summary -->
+    <div asp-validation-summary="All" class="error"></div>
+
+    <!-- 🔴 Error Message -->
+    @if (ViewBag.Error != null)
+    {
+        <p class="error">@ViewBag.Error</p>
+    }
+
+    <form asp-action="Register" method="post">
+
+        @Html.AntiForgeryToken()
 
         <label>Name</label>
         <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
+        <span asp-validation-for="Name" class="error"></span>
 
         <label>Email</label>
         <input asp-for="Email" />
-        <span asp-validation-for="Email"></span>
+        <span asp-validation-for="Email" class="error"></span>
 
         <label>Password</label>
         <input asp-for="Password" type="password" />
-        <span asp-validation-for="Password"></span>
+        <span asp-validation-for="Password" class="error"></span>
 
         <button type="submit">Register</button>
 
     </form>
 
-    <!-- 👇 Login redirect section -->
-
     <p class="text-center">Already have an account?</p>
 
     <a asp-controller="AppUser" asp-action="Login" class="btn secondary">
-        Go to Login (ID / Password)
+        Go to Login
     </a>
-
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
