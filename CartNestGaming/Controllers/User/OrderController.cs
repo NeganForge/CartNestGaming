@@ -57,7 +57,7 @@ namespace CartNestGaming.Controllers.User
         }
         public IActionResult Success()
         {
-            return View();
+            return View("~/Views/UserV/Order/Success.cshtml");
         }
         public IActionResult MyOrders()
         {
@@ -68,7 +68,7 @@ namespace CartNestGaming.Controllers.User
                .Where(o => o.UserId == UserId)
                .OrderByDescending(o => o.OrderDate)
                .ToList();
-            return View(orders);
+            return View("~/Views/UserV/Order/MyOrders.cshtml" ,orders);
         }
     }
 }

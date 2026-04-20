@@ -25,7 +25,7 @@ namespace CartNestGaming.Controllers.User
                 .Where(c => c.UserId == userId)
                 .ToList();
 
-            return View(cartItems);
+            return View("~/Views/UserV/Cart/Index.cshtml" ,cartItems);
         }
 
         // ✅ 2. Add to Cart
