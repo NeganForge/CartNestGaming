@@ -19,6 +19,17 @@
         position: relative;
     }
 
+    /* 🔥 Welcome Username */
+    .welcome-text {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #00eaff;
+        text-shadow: 0 0 10px #00eaff;
+    }
+
     .logout-btn {
         position: absolute;
         top: 20px;
@@ -119,7 +130,12 @@
 
 <div class="container">
 
-    <!-- ✅ FIXED LOGOUT -->
+    <!-- ✅ Username -->
+    <div class="welcome-text">
+        Welcome, @ViewBag.UserName 👋
+    </div>
+
+    <!-- ✅ Logout -->
     <a asp-controller="AppUser" asp-action="Logout" class="logout-btn">
         🚪 Logout
     </a>

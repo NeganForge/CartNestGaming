@@ -46,5 +46,15 @@ namespace CartNestGaming.Controllers.User
             // ✅ IMPORTANT PATH
             return View("~/Views/UserV/User/Index.cshtml", products.ToList());
         }
+        public IActionResult UserName()
+        {
+            int UserId = 1;
+            var res = _context.AppUsers
+                .Where(n => n.Id == UserId)
+                .Select(n => n.Name)
+                .FirstOrDefault();
+            ViewBag.UserName = User;
+            return View();
+        }
     }
 }
