@@ -18,20 +18,20 @@ namespace CartNestGaming.Controllers.User
         // ✅ 1. View Cart
         public IActionResult Index()
         {
-            string userId = "guest"; // later replace with logged-in user
+            int userId = 1; // TEMP USER (must be int)
 
             var cartItems = _context.Carts
                 .Include(c => c.Product)
                 .Where(c => c.UserId == userId)
                 .ToList();
 
-            return View("~/Views/UserV/Cart/Index.cshtml" ,cartItems);
+            return View("~/Views/UserV/Cart/Index.cshtml", cartItems);
         }
 
         // ✅ 2. Add to Cart
         public IActionResult AddToCart(int productId)
         {
-            string userId = "guest";
+            int userId = 1; // TEMP USER
 
             var existingItem = _context.Carts
                 .FirstOrDefault(c => c.ProductId == productId && c.UserId == userId);

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<dynamic>
+
+<h2 style="
+    text-align:center;
+    color:#00eaff;
+    margin-bottom:30px;
+    text-shadow: 0 0 10px #00eaff;
+    ">
+    🎮 Orders by Category
+</h2>
+
+<div style="
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+    ">
+
+    @foreach (var item in Model)
+    {
+        <div style="
+            width:260px;
+            padding:25px;
+            border-radius:20px;
+            background:#0d1b2a;
+            box-shadow: 0 0 25px #00eaff;
+            text-align:center;
+            color:white;
+            transition:0.3s;
+            "
+             onmouseover="this.style.transform='scale(1.08)'"
+             onmouseout="this.style.transform='scale(1)'">
+
+            <!-- 🎮 Controller Icon -->
+            <div style="
+                font-size:45px;
+                margin-bottom:15px;
+                text-shadow: 0 0 10px #00eaff;
+                ">
+                🎮
+            </div>
+
+            <!-- Category Name -->
+            <h3 style="
+                color:#00eaff;
+                margin-bottom:10px;
+                ">
+                @item.Category
+            </h3>
+
+            <!-- Orders Count -->
+            <p style="
+                font-size:18px;
+                margin-top:10px;
+                ">
+                Orders:
+                <span style="color:#00ffcc; font-weight:bold;">
+                    @item.TotalOrder
+                </span>
+            </p>
+
+        </div>
+    }
+
+</div>

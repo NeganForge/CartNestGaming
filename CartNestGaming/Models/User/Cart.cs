@@ -9,7 +9,7 @@ namespace CartNestGaming.Models
         [Key] // Primary Key
         public int Id { get; set; }
 
-        public string UserId { get; set; }  // later for login system
+        public int UserId { get; set; }   // ✅  // later for login system
 
         [ForeignKey("Product")]
         public int ProductId { get; set; }

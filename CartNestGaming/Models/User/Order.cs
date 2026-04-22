@@ -1,5 +1,5 @@
-﻿using CartNestGaming.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CartNestGaming.Models
 {
@@ -8,7 +8,10 @@ namespace CartNestGaming.Models
         [Key]
         public int Id { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }   // ✅ FIXED (string → int)
+
+        [ForeignKey("UserId")]
+        public AppUser User { get; set; } // ✅ ADD THIS
 
         public string OrderCode { get; set; }
 
@@ -16,7 +19,6 @@ namespace CartNestGaming.Models
 
         public DateTime OrderDate { get; set; }
 
-        // Navigation
-        public List<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>(); // ✅ safe
     }
 }
