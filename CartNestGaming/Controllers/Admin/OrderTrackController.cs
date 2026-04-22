@@ -17,16 +17,15 @@ namespace CartNestGaming.Controllers.Admin
         public IActionResult Index()
         {
             var res = _context.OrderItems
-                .Include(n => n.Product)
-                .ThenInclude(c => c.Category)
-                 .GroupBy(n => n.Product.Category.Name)
-                 .Select(n => new
-                 {
-                     Category = n.Key,
-                     TotalOrder = n.Count()
-                 }).ToList();
-            return View("~/Views/AdminV/OrderTrac/Index.cshtml",res);
-                 
+                .Include(p => p.Product)
+                .ThenInclude(p => p.Category)
+                .GroupBy(p => p.Product.Category.Name)
+                .Select(n => new
+                {
+                    CategoryName = n.Key,
+                    TotalSold = n.Sum(x => x.Quantity)
+                }).ToList();
+            return View("~/Views/AdminV/OandUTRack/Index.cshtml", res);
         }
     }
 }

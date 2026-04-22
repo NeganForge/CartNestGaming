@@ -1,5 +1,25 @@
 ﻿@model IEnumerable<dynamic>
 
+<!-- 🔙 BACK BUTTON -->
+<a href="/Admin/Dashboard" style="
+    position:fixed;
+    top:20px;
+    right:30px;
+    padding:10px 20px;
+    border-radius:12px;
+    background:linear-gradient(45deg,#06b6d4,#9333ea);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 0 15px #9333ea;
+    transition:0.3s;
+    z-index:999;
+    "
+       onmouseover="this.style.transform='scale(1.1)'"
+       onmouseout="this.style.transform='scale(1)'">
+    ⬅ Back
+</a>
+
 <h2 style="
     text-align:center;
     color:#00eaff;
@@ -31,7 +51,7 @@
              onmouseover="this.style.transform='scale(1.08)'"
              onmouseout="this.style.transform='scale(1)'">
 
-            <!-- 🎮 Controller Icon -->
+            <!-- 🎮 Icon -->
             <div style="
                 font-size:45px;
                 margin-bottom:15px;
@@ -40,22 +60,22 @@
                 🎮
             </div>
 
-            <!-- Category Name -->
+            <!-- Category -->
             <h3 style="
                 color:#00eaff;
                 margin-bottom:10px;
                 ">
-                @item.Category
+                @item.CategoryName
             </h3>
 
-            <!-- Orders Count -->
+            <!-- Products Sold -->
             <p style="
                 font-size:18px;
                 margin-top:10px;
                 ">
-                Orders:
+                Products Sold:
                 <span style="color:#00ffcc; font-weight:bold;">
-                    @item.TotalOrder
+                    @item.TotalSold
                 </span>
             </p>
 
